@@ -15,8 +15,9 @@ module.exports = function(robot) {
         var teamCount;
         teamCount = team.match[1];
 
-        var classmates = ["@johnny5", "@robocop", "@r2d2", "@sonylnagale", "@kitt", "@scobban", "@walle", "@bender"];
+        var classmates = ["@kitt", "@kitt", "@scobban", "@scobban"];
         // hidden during testing so that users to get pinged
+        // var classmates = ["Alx", "Erca", "Jhn", "Michl", "Olivr", "@scobban", "Trvor", "Trstan"];
         // var classmates = ["@labianca", "@erica", "@jgennell", "@myounkie", "@oli-g", "@scobban", "@albrechs", "@tcooper"];
         var group = [];
 
@@ -30,7 +31,9 @@ module.exports = function(robot) {
                 for (var j = 0; j < loops; j++) {
                     var newCount = classmates.length;
                     var spot = Math.floor(Math.random() * newCount);
-                    currentGroup.push(classmates[spot]);
+                    var currentPerson = classmates[spot];
+                    currentGroup.push(currentPerson);
+                    robot.messageRoom(currentPerson, "You're on team " + (i + 1));
                     classmates.splice(spot, 1);
                 }
                 team.send("*Team " + (i + 1) + "*: " + currentGroup.join(" ") + "\n");
