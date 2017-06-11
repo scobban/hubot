@@ -1,46 +1,42 @@
-// Alexander Labianca	labianca
-// Erica Gilbert	erica
-// John W. Gennell	jgennell
-// Michael Younkie	myounkie
-// Oliver Gillette	oli-g
-// Scott Cobban	scobban
-// Trevor Albrecht	albrechs
-// Tristan Cooper	tcooper
+// Description:
+//   Divide the list of classmates evenly into 2, 4, or 8 teams 
+//   and then display the team groups (note: breaking them up into 8 teams
+//   just lists everyone on their own team)
+
+// Commands:
+//   @kitt <integer> teams 
+
+// Author:
+//   scobban
 
 module.exports = function(robot) {
     robot.respond(/(.*) teams?/, function(team) {
+
         var teamCount;
         teamCount = team.match[1];
 
-        var classmates = ["Alx", "Erca", "Jhn", "Michl", "Olivr", "Scott", "Trvor", "Trstan"];
+        var classmates = ["Alx", "Erca", "Jhn", "Michl", "Olivr", "@scobban", "Trvor", "Trstan"];
+        // hidden during testing so that users to get pinged
+        // var classmates = ["@labianca", "@erica", "@jgennell", "@myounkie", "@oli-g", "@scobban", "@albrechs", "@tcooper"];
         var group = [];
 
-        if (teamCount < 2 || teamCount > classmates.length) {
-
-        	return team.send("Please enter a number between 2 and " + classmates.length + ".");
-
-        } else if (teamCount % 2 == 0 && teamCount % 3 !== 0) {
-
+        if (teamCount == 2 || teamCount == 4 || teamCount == 8) {
             var loops = classmates.length / teamCount;
-
             for (var i = 0; i < teamCount; i++) {
                 group.push([]);
             }
-
             for (var i = 0; i < group.length; i++) {
                 var currentGroup = group[i];
-
                 for (var j = 0; j < loops; j++) {
                     var newCount = classmates.length;
                     var spot = Math.floor(Math.random() * newCount);
                     currentGroup.push(classmates[spot]);
                     classmates.splice(spot, 1);
                 }
-
                 team.send("*Team " + (i + 1) + "*: " + currentGroup.join(" ") + "\n");
             }
         } else {
-            return team.send("");
+            return team.send("I can only create 2, 4, or 8 teams. That's all that the computer can handle.");
         }
     })
 }
