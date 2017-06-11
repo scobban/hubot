@@ -15,7 +15,7 @@ module.exports = function(robot) {
         var teamCount;
         teamCount = team.match[1];
 
-        var classmates = ["Alx", "Erca", "Jhn", "Michl", "Olivr", "@scobban", "Trvor", "Trstan"];
+        var classmates = ["@johnny5", "@robocop", "@r2d2", "@sonylnagale", "@kitt", "@scobban", "@walle", "@bender"];
         // hidden during testing so that users to get pinged
         // var classmates = ["@labianca", "@erica", "@jgennell", "@myounkie", "@oli-g", "@scobban", "@albrechs", "@tcooper"];
         var group = [];
