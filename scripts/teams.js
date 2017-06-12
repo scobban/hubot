@@ -15,10 +15,7 @@ module.exports = function(robot) {
         var teamCount;
         teamCount = team.match[1];
 
-        var classmates = ["@kitt", "@kitt", "@scobban", "@scobban"];
-        // hidden during testing so that users to get pinged
-        // var classmates = ["Alx", "Erca", "Jhn", "Michl", "Olivr", "@scobban", "Trvor", "Trstan"];
-        // var classmates = ["@labianca", "@erica", "@jgennell", "@myounkie", "@oli-g", "@scobban", "@albrechs", "@tcooper"];
+        var classmates = ["@labianca", "@erica", "@jgennell", "@myounkie", "@oli-g", "@scobban", "@albrechs", "@tcooper"];
         var group = [];
 
         if (teamCount == 2 || teamCount == 4 || teamCount == 8) {
