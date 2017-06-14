@@ -23,17 +23,17 @@ module.exports = function(robot) {
             for (var i = 0; i < teamCount; i++) {
                 group.push([]);
             }
-            for (var i = 0; i < group.length; i++) {
+            for (var k = 0; k < group.length; k++) {
                 var currentGroup = group[i];
                 for (var j = 0; j < loops; j++) {
                     var newCount = classmates.length;
                     var spot = Math.floor(Math.random() * newCount);
                     var currentPerson = classmates[spot];
                     currentGroup.push(currentPerson);
-                    robot.messageRoom(currentPerson, "You're on team " + (i + 1));
+                    robot.messageRoom(currentPerson, "You're on team " + (k + 1));
                     classmates.splice(spot, 1);
                 }
-                team.send("*Team " + (i + 1) + "*: " + currentGroup.join(" ") + "\n");
+                team.send("*Team " + (k + 1) + "*: " + currentGroup.join(" ") + "\n");
             }
         } else {
             return team.send("I can only create 2, 4, or 8 teams. That's all that the computer can handle.");
